@@ -1,0 +1,105 @@
+/* 전체 배경을 검은색으로 설정 */
+.Header_Container {
+    background-color: #000000;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 왼쪽에 배치 */
+    align-items: left; /* 수평 중앙 정렬 */
+    color: #00FF00; /* 글자 색을 초록색으로 */
+    padding-top: 10px; /* 상단 여백 추가 */
+}
+
+/* 타이핑 효과를 위한 스타일 */
+.title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 20px;
+    width: 0; /* 처음엔 글자가 안보임 */
+    animation: typing 3s steps(30) 1s forwards, fadeIn 0.75s ease-in-out 1s forwards; /* 타이핑 + 깜빡임 효과 */
+}
+
+/* 메뉴 바 스타일 - 가로 정렬 */
+.Menu_bar {
+    display: flex;
+    justify-content: flex-start; /* 메뉴 항목들이 왼쪽으로 정렬되지 않도록 */
+    position: absolute; /* 메뉴를 절대 위치로 설정 */
+    top: 20px; /* 상단에 위치 */
+    right: 20px; /* 오른쪽에 위치 */
+    margin-top: 10px;
+    opacity: 0; /* 처음엔 숨겨둠 */
+    animation: fadeIn 1s ease-in-out 1s forwards; /* 메뉴 전체가 천천히 보이도록 */
+    width: 300px; /* 메뉴 바의 고정된 너비 설정 */
+    max-width: 100%; /* 화면 크기에 맞게 최대 너비 설정 */
+}
+
+/* 메뉴 항목 타이핑 효과 */
+.menu {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    margin: 0 8px; /* 메뉴 항목 사이 간격을 8px로 설정 */
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline; /* inline으로 변경하여 더 유연하게 처리 */
+    width: auto; /* 자동 크기 확장 */
+    animation: typing 3s steps(30) 1.5s forwards, fadeIn 0.75s ease-in-out 1s forwards; /* 타이핑 + 깜빡임 효과 */
+}
+
+/* 타이핑 애니메이션 */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* 메뉴가 등장하는 효과 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* 화면 크기에 따른 반응형 설정 */
+
+/* 화면 크기가 1200px 이상일 경우 */
+@media (min-width: 1200px) {
+    .Menu_bar {
+        top: 20px;
+        right: 20px;
+    }
+    .menu {
+        font-size: 1rem;
+    }
+}
+
+/* 화면 크기가 768px 이상 1200px 미만일 경우 (중간 크기 화면) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .Menu_bar {
+        top: 10px;
+        right: 15px;
+    }
+    .menu {
+        font-size: 0.8rem; /* 폰트 크기 약간 축소 */
+        margin: 0 10px; /* 메뉴 항목 간격 좁힘 */
+    }
+}
+
+/* 화면 크기가 768px 미만일 경우 (모바일 등 작은 화면) */
+@media (max-width: 767px) {
+    .Menu_bar {
+        top: 10px;
+        right: 10px;
+    }
+    .menu {
+        font-size: 0.6rem; /* 폰트 크기 더 작게 */
+        margin: 0 8px; /* 메뉴 항목 간격 더 좁힘 */
+    }
+}
