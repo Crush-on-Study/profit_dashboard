@@ -1,130 +1,82 @@
-@keyframes drawCircle {
-    from {
-      stroke-dashoffset: 1000;
-    }
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes glowPulse {
-    0% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.8;
-    }
-    100% {
-      opacity: 0.4;
-    }
-  }
-  
-  @keyframes rotateTech {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .main-circle {
-    stroke-dasharray: 1000;
-    animation: drawCircle 3s ease-in-out forwards;
-  }
-  
-  .tech-pattern {
-    animation: fadeIn 2s ease-in-out 1.5s forwards, rotateTech 20s linear infinite;
-    opacity: 0;
-  }
-  
-  .bitcoin-logo {
-    animation: fadeIn 2s ease-in-out 1s forwards;
-    opacity: 0;
-  }
-  
-  .glow-center {
-    animation: glowPulse 3s ease-in-out infinite;
-  }
-  
-  .orbital-elements {
-    animation: fadeIn 1s ease-in-out 2.5s forwards;
-    opacity: 0;
-  }
-  
+/* 부모 컨테이너 */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000000;
+}
 
-  /* 기본 스타일 */
-@keyframes drawCircle {
-    from {
-      stroke-dashoffset: 1000;
-    }
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes glowPulse {
-    0% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.8;
-    }
-    100% {
-      opacity: 0.4;
-    }
-  }
-  
-  @keyframes rotateTech {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .main-circle {
-    stroke-dasharray: 1000;
-    animation: drawCircle 3s ease-in-out forwards;
-  }
-  
-  .tech-pattern {
-    animation: fadeIn 2s ease-in-out 1.5s forwards, rotateTech 20s linear infinite;
+/* 텍스트 애니메이션 */
+.loading-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00ff00;
+  margin-top: 20px;
+  animation: textFadeInOut 2s infinite;
+  text-align: center;
+}
+
+@keyframes textFadeInOut {
+  0%, 100% {
     opacity: 0;
   }
-  
-  .bitcoin-logo {
-    animation: fadeIn 2s ease-in-out 1s forwards;
-    opacity: 0;
+  50% {
+    opacity: 1;
   }
-  
-  .glow-center {
-    animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* 프로그레스 바 스타일 */
+.progress-bar {
+  width: 80%;
+  height: 10px;
+  background-color: #444;
+  border-radius: 5px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background-color: #00ff00;
+  animation: progressAnimation 3s infinite;
+}
+
+@keyframes progressAnimation {
+  0% {
+    width: 0%;
   }
-  
-  .orbital-elements {
-    animation: fadeIn 1s ease-in-out 2.5s forwards;
-    opacity: 0;
+  50% {
+    width: 50%;
   }
-  
-  /* 반응형 스타일 추가 예정 */
-  
+  100% {
+    width: 100%;
+  }
+}
+
+/* 기존 애니메이션 유지 */
+.main-circle {
+  stroke-dasharray: 1000;
+  animation: drawCircle 3s ease-in-out forwards;
+}
+
+.tech-pattern {
+  animation: fadeIn 2s ease-in-out 1.5s forwards, rotateTech 20s linear infinite;
+  opacity: 0;
+}
+
+.bitcoin-logo {
+  animation: fadeIn 2s ease-in-out 1s forwards;
+  opacity: 0;
+}
+
+.glow-center {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.orbital-elements {
+  animation: fadeIn 1s ease-in-out 2.5s forwards;
+  opacity: 0;
+}

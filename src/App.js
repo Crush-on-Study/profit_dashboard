@@ -5,6 +5,8 @@ import HeaderZone from "./Layout1/HeaderZone" /*헤더라인*/
 import LoadingScreen from './Layout0/LoadingScreen' /*로딩화면*/
 import NetworkChart from './Chart_House/NetworkChart'
 import BarChart from './Chart_House/BarChart'
+import Sidebar from './Layout1/Sidebar';
+import Footer from './Layout1/Footer';
 
 /* App.js의 css */
 import './App.css';
@@ -18,42 +20,44 @@ export default function MyApp() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000); // 타이핑 애니메이션 시간 (예시로 5초 설정)
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     if (!isLoading) {
-      // Account Dashboard 타이핑이 끝난 후 차트가 1초 뒤에 나타나도록 설정
       setTimeout(() => {
         setIsChartVisible(true);
-      }, 1000); // 1초 후 차트가 나타남
+      }, 1000);
     }
   }, [isLoading]);
 
   return (
-    <div>
+    <div className="app-container">
       {isLoading ? (
         <LoadingScreen />
       ) : (
         <>
           <HeaderZone />
-          <div className="divider"></div>
-          <div className="dashboard-container">
-            <div className="charts-section">
-              <div className="chart-item">
-                <BarChart />
+          <Sidebar />
+          <div className="main-content">
+            <div className="divider"></div>
+            <div className="dashboard-container">
+              <div className="charts-section">
+                <div className="chart-item">
+                  <BarChart />
+                </div>
+                <div className="chart-item">
+                  <NetworkChart />
+                </div>
               </div>
-              <div className="chart-item">
-                <NetworkChart />
+              <div className="data-section">
+                <h2>크롤링 데이터</h2>
+                <p>여기에 크롤링 데이터를 표시할 것입니다.</p>
               </div>
-              
             </div>
-            <div className="data-section">
-              <h2>크롤링 데이터</h2>
-              <p>여기에 크롤링 데이터를 표시할 것입니다.</p>
-            </div>
+            <Footer />
           </div>
         </>
       )}

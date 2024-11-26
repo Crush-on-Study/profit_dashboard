@@ -1,0 +1,31 @@
+.divider {
+    width: 100%; /* 양쪽에 20px 마진을 주기 위해 전체 너비에서 40px을 뺌 */
+    height: 1px;
+    background-color: transparent; /* 기본 배경을 투명으로 설정 */
+    position: relative;
+    margin: 20px 0;
+    opacity: 0.8;
+    overflow: hidden;
+}
+
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #00FF00;
+    animation: electricShock 2s linear forwards;
+}
+
+/* Footer 스타일 */
+.footer {
+    width: 100%;
+    color: #00FF00;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+}
